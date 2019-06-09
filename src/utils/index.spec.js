@@ -46,13 +46,13 @@ describe('up', () => {
 describe('down', () => {
   it('should return string with max breakpoint value and media query', () => {
     expect(down('tablet')(CUSTOM_THEME)).toEqual(
-      '@media (max-width: 991.98px)',
+      '@media (max-width: 767.98px)',
     );
   });
 
   it('should return string with max breakpoint value and media query (from default theme)', () => {
     expect(down('tablet')(CUSTOM_THEME_IS_EMPTY)).toEqual(
-      '@media (max-width: 991.98px)',
+      '@media (max-width: 767.98px)',
     );
   });
 });

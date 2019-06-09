@@ -122,13 +122,20 @@ export const calcMaxWidth = (breakName: string, theme: CustomTheme): string => {
   return getNextBreakpointValue(breakName, breakpoints);
 };
 
+export const calcMaxWidthDown = (breakName: string, theme: CustomTheme): string => {
+  const { breakpoints } = setCustomOrDefaultTheme(theme);
+  const breakpointValue = parseFloat(getBreakpointValue(breakName, breakpoints))
+
+  return `${breakpointValue - 0.02}px`;
+};
+
 type Up = (string) => (BpProps) => string;
 export const up: Up = (breakName) => ({ theme }) =>
   withMinMedia(calcMinWidth(breakName, theme));
 
 type Down = (string) => (BpProps) => string;
 export const down: Down = (breakName) => ({ theme }) =>
-  withMaxMedia(calcMaxWidth(breakName, theme));
+  withMaxMedia(calcMaxWidthDown(breakName, theme));
 
 type Between = (string, string) => (BpProps) => string;
 export const between: Between = (minBreak, maxBreak) => ({ theme }) =>
