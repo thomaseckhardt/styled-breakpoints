@@ -3,7 +3,6 @@ import {
   down,
   between,
   only,
-  toEm,
   invariant,
   withMinMedia,
   withMaxMedia,
@@ -34,12 +33,12 @@ const CUSTOM_THEME_IS_EMPTY = {
 
 describe('up', () => {
   it('should return string with min breakpoint value and media query', () => {
-    expect(up('tablet')(CUSTOM_THEME)).toEqual('@media (min-width: 48em)');
+    expect(up('tablet')(CUSTOM_THEME)).toEqual('@media (min-width: 768px)');
   });
 
   it('should return string with min breakpoint value and media query (from default theme)', () => {
     expect(up('tablet')(CUSTOM_THEME_IS_EMPTY)).toEqual(
-      '@media (min-width: 48em)',
+      '@media (min-width: 768px)',
     );
   });
 });
@@ -47,13 +46,13 @@ describe('up', () => {
 describe('down', () => {
   it('should return string with max breakpoint value and media query', () => {
     expect(down('tablet')(CUSTOM_THEME)).toEqual(
-      '@media (max-width: 61.99875em)',
+      '@media (max-width: 991.98px)',
     );
   });
 
   it('should return string with max breakpoint value and media query (from default theme)', () => {
     expect(down('tablet')(CUSTOM_THEME_IS_EMPTY)).toEqual(
-      '@media (max-width: 61.99875em)',
+      '@media (max-width: 991.98px)',
     );
   });
 });
@@ -61,13 +60,13 @@ describe('down', () => {
 describe('between', () => {
   it('should returns a string containing the value of the minimum and maximum breakpoints and media query', () => {
     expect(between('tablet', 'desktop')(CUSTOM_THEME)).toEqual(
-      '@media (min-width: 48em) and (max-width: 74.99875em)',
+      '@media (min-width: 768px) and (max-width: 1199.98px)',
     );
   });
 
   it('should returns a string containing the value of the minimum and maximum breakpoints and media query (from default theme)', () => {
     expect(between('tablet', 'desktop')(CUSTOM_THEME_IS_EMPTY)).toEqual(
-      '@media (min-width: 48em) and (max-width: 74.99875em)',
+      '@media (min-width: 768px) and (max-width: 1199.98px)',
     );
   });
 });
@@ -75,13 +74,13 @@ describe('between', () => {
 describe('only', () => {
   it('should returns a string containing the minimum and maximum values of the current breakpoint and media query', () => {
     expect(only('tablet')(CUSTOM_THEME)).toEqual(
-      '@media (min-width: 48em) and (max-width: 61.99875em)',
+      '@media (min-width: 768px) and (max-width: 991.98px)',
     );
   });
 
   it('should returns a string containing the minimum and maximum values of the current breakpoint and media query (from default theme)', () => {
     expect(only('tablet')(CUSTOM_THEME_IS_EMPTY)).toEqual(
-      '@media (min-width: 48em) and (max-width: 61.99875em)',
+      '@media (min-width: 768px) and (max-width: 991.98px)',
     );
   });
 });
@@ -154,45 +153,39 @@ describe('getNextBreakpointValue', () => {
 
 describe('withMinMedia', () => {
   it('should return string containing the breakpoint value  with media query', () => {
-    expect(withMinMedia('40em')).toEqual('@media (min-width: 40em)');
+    expect(withMinMedia('640px')).toEqual('@media (min-width: 640px)');
   });
 });
 
 describe('withMaxMedia', () => {
   it('should return string containing the breakpoint value  with media query', () => {
-    expect(withMaxMedia('40em')).toEqual('@media (max-width: 40em)');
+    expect(withMaxMedia('640px')).toEqual('@media (max-width: 640px)');
   });
 });
 
 describe('withMinAndMaxMedia', () => {
   it('should return string containing the breakpoint value  with media query', () => {
-    expect(withMinAndMaxMedia('40em', '60em')).toEqual(
-      '@media (min-width: 40em) and (max-width: 60em)',
+    expect(withMinAndMaxMedia('640px', '960px')).toEqual(
+      '@media (min-width: 640px) and (max-width: 960px)',
     );
   });
 });
 
 describe('calcMinWidth', () => {
   it('calculate min with in pixels from default theme', () => {
-    expect(calcMinWidth('desktop', DEFAULT_BREAKS)).toEqual('62em');
+    expect(calcMinWidth('desktop', DEFAULT_BREAKS)).toEqual('992px');
   });
 });
 
 describe('calcMaxWidth', () => {
   it('calculate max with in pixels from default theme', () => {
-    expect(calcMaxWidth('tablet', DEFAULT_BREAKS)).toEqual('61.99875em');
+    expect(calcMaxWidth('tablet', DEFAULT_BREAKS)).toEqual('991.98px');
   });
 });
 
 describe('errorReporter', () => {
   it('return object Error with error message', () => {
     expect(invariant).toThrow();
-  });
-});
-
-describe('toEm', () => {
-  it('convert values from pixels to ems', () => {
-    expect(toEm('16px')).toEqual('1em');
   });
 });
 

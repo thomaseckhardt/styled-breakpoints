@@ -31,8 +31,6 @@ export const withMinAndMaxMedia = (
 export const isObject = (value: mixed): boolean =>
   Object.prototype.toString.call(value).slice(8, -1) === 'Object';
 
-export const toEm = (inPx: string): string => `${parseFloat(inPx) / 16}em`;
-
 export const makeErrorMessage = (
   breakName: string,
   breaks: Breakpoints,
@@ -115,13 +113,13 @@ export const getNextBreakpointValue = (
 export const calcMinWidth = (breakName: string, theme: CustomTheme): string => {
   const { breakpoints } = setCustomOrDefaultTheme(theme);
 
-  return toEm(getBreakpointValue(breakName, breakpoints));
+  return getBreakpointValue(breakName, breakpoints);
 };
 
 export const calcMaxWidth = (breakName: string, theme: CustomTheme): string => {
   const { breakpoints } = setCustomOrDefaultTheme(theme);
 
-  return toEm(getNextBreakpointValue(breakName, breakpoints));
+  return getNextBreakpointValue(breakName, breakpoints);
 };
 
 type Up = (string) => (BpProps) => string;
