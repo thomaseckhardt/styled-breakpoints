@@ -1,5 +1,5 @@
 {
-  "name": "styled-breakpoints",
+  "name": "@thomaseckhardt/styled-breakpoints",
   "version": "6.6.3",
   "description": "Simple and powerfull css breakpoints for styled-components",
   "main": "dist/lib/index.js",
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/mg901/styled-breakpoints#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mg901/styled-breakpoints.git"
+    "url": "git+https://github.com/mg901/styled-breakpoints.git"
   },
   "bugs": {
     "url": "https://github.com/mg901/styled-breakpoints/issues"
@@ -96,5 +96,6 @@
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "5.0.0",
     "rollup-plugin-uglify": "6.0.2"
-  }
+  },
+  "dependencies": {}
 }
